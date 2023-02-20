@@ -8,15 +8,17 @@ In this project, I implemented a transport protocol that provides some reliabili
 on top of the unreliable UDP. This is done by augmenting UDP with the GBN protocol.
 
 The sender executes three types of events:
-1)When it is invoked to send data. It checks to see whether the window is full. If the window is not full. The packet is created and ready to be sent and variables are modified accordingly .
+1) When it is invoked to send data. It checks to see whether the window is full. If the window is not full. The packet is created and ready to be sent and variables are modified accordingly .
 2) When it receives an ACK. An acknowledgement packet with sequence n indicates that all packets up to n have been received successfully prompting the sender to slide its window and update its base to n+1
 3) Timeout. If a timeout occurs, the sender is required to resend all the packets that have been already sent and they might have lost or their acknowledgements weren’t received. There is one single timer which is for the oldest transmitted unacknowledged packet. The timer restarts upon each ACK reception.
 
 
 Here is the Sender Packet Structure
+
 ![image](https://user-images.githubusercontent.com/58476343/220149355-a58cfc44-b87e-443f-b156-3993f8681fb8.png)
 
 Here is the Acknowledgment Structure
+
 ![image](https://user-images.githubusercontent.com/58476343/220149428-cfe8a5f0-1e33-4c43-a77f-c698760e57d8.png)
 
 
